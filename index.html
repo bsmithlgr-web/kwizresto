@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kwiz Restaurant - Ngara, Nairobi | Fast Delivery 24/7</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/restaurant-.png">
+    
+    <!-- WhatsApp Floating Button CSS -->
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+        .whatsapp-text {
+            position: fixed;
+            width: 200px;
+            height: 40px;
+            bottom: 100px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .whatsapp-float:hover + .whatsapp-text {
+            opacity: 1;
+        }
+    </style>
+    
+    <!-- Main CSS -->
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D35400;
+            --primary-dark: #A04000;
+            --primary-light: #FF8C42;
+            --secondary: #27AE60;
+            --accent: #F39C12;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --gray: #7F8C8D;
+            --success: #2ECC71;
+            --warning: #E74C3C;
+            --whatsapp: #25D366;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #fefefe;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(211, 84, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #219653);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-btn:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--warning);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 200px 0 120px;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,128C672,107,768,117,864,138.7C960,160,1056,192,1152,192C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23D35400" fill-opacity="0.03" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* ===== MENU SECTION ===== */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-btn {
+            padding: 12px 28px;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.2);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .menu-item-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            flex: 1;
+        }
+
+        .menu-item-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-item-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            gap: 15px;
+        }
+
+        .order-item-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .order-item-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.3);
+        }
+
+        .quick-order-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quick-order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ===== ORDER PANEL ===== */
+        .order-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-panel.active {
+            right: 0;
+        }
+
+        .order-panel-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-panel-header h3 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .close-panel {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-panel:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .order-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .order-item-info h4 {
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .order-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .order-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .remove-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: none;
+            background: var(--warning);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .order-panel-footer {
+            padding: 25px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+        }
+
+        .total-label {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .total-amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .panel-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* ===== KITCHEN DISPLAY ===== */
+        .kitchen-display {
+            background: linear-gradient(135deg, var(--dark), #1a252f);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kitchen-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,224L48,218.7C96,213,192,203,288,176C384,149,480,107,576,112C672,117,768,171,864,186.7C960,203,1056,181,1152,165.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .kitchen-display .section-title h2 {
+            color: white;
+        }
+
+        .kitchen-screen {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-height: 500px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .kitchen-order {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .kitchen-order:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .order-id {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .order-time {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .order-items-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .order-items-list li {
+            margin-bottom: 8px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-pending {
+            background: linear-gradient(135deg, var(--accent), #E67E22);
+            color: white;
+        }
+
+        .status-preparing {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .status-ready {
+            background: linear-gradient(135deg, var(--success), #27AE60);
+            color: white;
+        }
+
+        .status-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .status-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn-prepare {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-prepare:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-ready {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-ready:hover {
+            background: #219653;
+        }
+
+        .btn-complete {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-complete:hover {
+            background: #219653;
+        }
+
+        /* ===== DELIVERY INFO ===== */
+        .delivery-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .delivery-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .delivery-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .delivery-areas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .area-tag {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--secondary), #219653);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.2);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .info-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .info-text p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* ===== WHATSAPP AUTOMATION ===== */
+        .whatsapp-automation {
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-automation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,160L48,170.7C96,181,192,203,288,213.3C384,224,480,224,576,218.7C672,213,768,203,864,186.7C960,171,1056,149,1152,149.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .whatsapp-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .whatsapp-step {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 40px 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .whatsapp-step:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--whatsapp);
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .whatsapp-step p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1a252f);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.02" d="M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,128C672,139,768,181,864,197.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+        .chef-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 120px;
+            right: 30px;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 400px;
+            animation: slideInRight 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .notification-success {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.95), rgba(39, 174, 96, 0.95));
+            color: white;
+            border-left: 5px solid #27AE60;
+        }
+
+        .notification-warning {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.95), rgba(192, 57, 43, 0.95));
+            color: white;
+            border-left: 5px solid #C0392B;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .notification-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ===== OVERLAY ===== */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(211, 84, 0, 0.2);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 50px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .order-panel {
+                width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 160px 0 80px;
+                background-attachment: scroll;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                box-shadow: 5px 0 30px rgba(0,0,0,0.1);
+                padding: 100px 30px 30px;
+                transition: var(--transition);
+                z-index: 1001;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1002;
+            }
+            
+            .header-actions {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .order-panel.active {
+                right: 0;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+            
+            .whatsapp-text {
+                display: none;
+            }
+            
+            .notification {
+                top: 80px;
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+            
+            .delivery-card {
+                padding: 30px 20px;
+            }
+            
+            .kitchen-screen {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .menu-item-footer {
+                flex-direction: column;
+            }
+            
+            .whatsapp-step {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            header, .hero-buttons, .cart-btn, .order-panel, .whatsapp-float, .whatsapp-text, .notification, footer {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            section {
+                padding: 20pt 0;
+                page-break-inside: avoid;
+            }
+            
+            .menu-item {
+                break-inside: avoid;
+            }
+        }
+
+        /* ===== DARK MODE SUPPORT ===== */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: #e0e0e0;
+            }
+            
+            .menu-item, .feature-card, .delivery-card {
+                background: #1e1e1e;
+                border-color: #333;
+            }
+            
+            .order-panel, .kitchen-screen {
+                background: #1e1e1e;
+            }
+            
+            nav a, .logo-text h1, .menu-item-title, .order-item-info h4 {
+                color: #e0e0e0;
+            }
+            
+            .menu-item-desc, .feature-card p, .footer-column p {
+                color: #b0b0b0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254702373219?text=Hello%20KWIZ%20Restaurant,%20I%20would%20like%20to%20place%20an%20order" class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="whatsapp-text">Order on WhatsApp</div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>KWIZ Restaurant</h1>
+                    <span>Authentic Kenyan Cuisine • Ngara, Nairobi</span>
+                </div>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#delivery">Delivery</a></li>
+                    <li><a href="#kitchen">Kitchen View</a></li>
+                    <li><a href="#whatsapp">WhatsApp Order</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="cart-btn" id="viewCartBtn" aria-label="View cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Order Panel Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Order Panel -->
+    <div class="order-panel" id="orderPanel">
+        <div class="order-panel-header">
+            <h3>Your Order</h3>
+            <button class="close-panel" id="closePanelBtn" aria-label="Close order panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="order-items" id="orderItems">
+            <p style="text-align: center; color: var(--gray); padding: 40px 20px;">Your cart is empty. Add items from the menu to get started!</p>
+        </div>
+        
+        <div class="order-panel-footer">
+            <div class="order-total">
+                <span class="total-label">Total Amount:</span>
+                <span class="total-amount" id="orderTotal">0 KSH</span>
+            </div>
+            <div class="panel-buttons">
+                <a href="https://wa.me/254702373219?text=" class="btn btn-whatsapp" id="whatsappOrderBtn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Complete Order via WhatsApp
+                </a>
+                <button class="btn btn-secondary" id="sendEmailBtn">
+                    <i class="fas fa-envelope"></i> Send Order to Kitchen
+                </button>
+                <button class="btn" id="clearCartBtn" style="background: var(--light); color: var(--dark);">
+                    <i class="fas fa-trash"></i> Clear Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Delicious Kenyan Food Delivered to Your Doorstep</h2>
+                <p>Experience authentic Kenyan cuisine prepared with love by Chef Evrard. We deliver hot, fresh meals directly to your home or office in Ngara, Nairobi. Fast delivery, great prices, and amazing taste guaranteed!</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">
+                        <i class="fas fa-utensils"></i> View Our Menu
+                    </a>
+                    <a href="https://wa.me/254702373219?text=Hello%20KWIZ%20Restaurant,%20I'd%20like%20to%20order%20food" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose KWIZ?</h2>
+                <p>Experience the best of Kenyan cuisine with our premium services</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your food delivered in 30-45 minutes within Ngara area. We guarantee hot and fresh meals at your doorstep.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>All meals prepared daily with fresh, quality ingredients sourced from local markets. Authentic taste guaranteed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Restaurant open 24/7 for walk-ins. Delivery available from 8:00 AM to 10:30 PM daily.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Easy Ordering</h3>
+                    <p>Order via WhatsApp, website, or phone. Our automated system ensures smooth ordering experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Delicious Menu</h2>
+                <p>Authentic Kenyan dishes at affordable prices. All prices in KSH.</p>
+            </div>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="main">Main Dishes</button>
+                <button class="category-btn" data-category="side">Sides & Snacks</button>
+                <button class="category-btn" data-category="drink">Drinks</button>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Kitchen Display Section -->
+    <section class="kitchen-display" id="kitchen">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kitchen Order Display</h2>
+                <p>Real-time order monitoring for the kitchen staff. New orders appear automatically.</p>
+            </div>
+            
+            <div class="kitchen-screen">
+                <h3 style="color: var(--accent); margin-bottom: 30px; text-align: center;">🔔 LIVE ORDERS - KITCHEN VIEW 🔔</h3>
+                <div class="orders-list" id="kitchenOrders">
+                    <div class="kitchen-order">
+                        <div class="order-header">
+                            <span class="order-id">ORDER #001</span>
+                            <span class="order-time">Today, 14:30</span>
+                        </div>
+                        <ul class="order-items-list">
+                            <li>2 × Pilau with Beef</li>
+                            <li>1 × Chicken Choma 1/4</li>
+                            <li>1 × Fresh Juice 500ml (Mango)</li>
+                        </ul>
+                        <div class="order-footer">
+                            <span class="order-status status-preparing">PREPARING</span>
+                            <div class="status-buttons">
+                                <button class="status-btn btn-ready" onclick="updateOrderStatus('ORD001', 'ready')">
+                                    Mark Ready
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kitchen-order">
+                        <div class="order-header">
+                            <span class="order-id">ORDER #002</span>
+                            <span class="order-time">Today, 15:45</span>
+                        </div>
+                        <ul class="order-items-list">
+                            <li>1 × Roast Potato + Chicken Roti</li>
+                            <li>1 × Salad</li>
+                            <li>2 × Soda 500ml</li>
+                        </ul>
+                        <div class="order-footer">
+                            <span class="order-status status-pending">PENDING</span>
+                            <div class="status-buttons">
+                                <button class="status-btn btn-prepare" onclick="updateOrderStatus('ORD002', 'preparing')">
+                                    Start Prep
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" id="simulateOrderBtn">
+                    <i class="fas fa-plus"></i> Simulate New Order (Demo)
+                </button>
+                <button class="btn" id="refreshOrdersBtn" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); margin-left: 15px;">
+                    <i class="fas fa-sync-alt"></i> Refresh Orders
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Information -->
+    <section class="delivery-info" id="delivery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Delivery Information</h2>
+                <p>We deliver to your doorstep in Ngara and surrounding areas</p>
+            </div>
+            
+            <div class="delivery-content">
+                <div class="delivery-card">
+                    <h3 style="margin-bottom: 25px; color: var(--dark);">Delivery Areas</h3>
+                    <div class="delivery-areas">
+                        <span class="area-tag">Ngara Equity</span>
+                        <span class="area-tag">Mwangi Riika Crescent</span>
+                        <span class="area-tag">Terex Building</span>
+                        <span class="area-tag">All Surrounding Buildings</span>
+                        <span class="area-tag">Ngara Market Area</span>
+                        <span class="area-tag">Nearby Offices</span>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Delivery Hours</h4>
+                                <p><strong>8:00 AM - 10:30 PM</strong> (Daily)<br>Restaurant open 24/7 for walk-ins</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Payment Method</h4>
+                                <p>Cash on delivery only<br>Free delivery within service area</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Delivery Time</h4>
+                                <p>30-45 minutes<br>Depending on order size and location</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Contact</h4>
+                                <p><strong>0702 373 219</strong><br>Call or WhatsApp anytime</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Automation -->
+    <section class="whatsapp-automation" id="whatsapp">
+        <div class="container">
+            <div class="whatsapp-content">
+                <div class="section-title">
+                    <h2>Order via WhatsApp</h2>
+                    <p>Our automated WhatsApp Business system makes ordering easy and efficient</p>
+                </div>
+                
+                <div class="whatsapp-steps">
+                    <div class="whatsapp-step">
+                        <div class="step-number">1</div>
+                        <h3>Start Chat</h3>
+                        <p>Send "Hello" or "Menu" to +254 702 373 219 to begin</p>
+                    </div>
+                    
+                    <div class="whatsapp-step">
+                        <div class="step-number">2</div>
+                        <h3>Choose Menu</h3>
+                        <p>Select from our automated menu with prices and categories</p>
+                    </div>
+                    
+                    <div class="whatsapp-step">
+                        <div class="step-number">3</div>
+                        <h3>Provide Details</h3>
+                        <p>Share delivery address, special instructions, and contact info</p>
+                    </div>
+                    
+                    <div class="whatsapp-step">
+                        <div class="step-number">4</div>
+                        <h3>Get Confirmation</h3>
+                        <p>Receive instant order confirmation and preparation updates</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 50px;">
+                    <a href="https://wa.me/254702373219?text=Hello%20KWIZ%20Restaurant%2C%20I%20would%20like%20to%20see%20the%20menu%20and%20place%20an%20order" class="btn" style="background: white; color: #25D366; font-size: 1.2rem; padding: 18px 45px;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Start WhatsApp Order Now
+                    </a>
+                    <p style="margin-top: 30px; opacity: 0.9; font-size: 1.1rem;">
+                        <i class="fas fa-phone" style="margin-right: 10px;"></i> Or call us directly: <strong>0702 373 219</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KWIZ Restaurant</h3>
+                    <p>Delivering authentic Kenyan cuisine in Ngara, Nairobi since 2020. Our mission is to provide delicious, home-cooked meals with fast and reliable delivery service.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/254702373219" class="social-icon" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <p style="font-weight: 600; color: white;">0702 373 219</p>
+                            <p style="font-size: 0.9rem;">Call or WhatsApp</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <p style="font-weight: 600; color: white;">Ngara, Nairobi</p>
+                            <p style="font-size: 0.9rem;">Kenya</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div>
+                            <p style="font-weight: 600; color: white;">Terex Building Area</p>
+                            <p style="font-size: 0.9rem;">Near Equity Bank</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <img src="photos/chef.jpg" alt="Chef Evrard" class="chef-photo">
+                        </div>
+                        <div>
+                            <p style="font-weight: 600; color: white;">Chef Evrard</p>
+                            <p style="font-size: 0.9rem;">Owner & Head Chef</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#menu">Menu & Prices</a>
+                    <a href="#delivery">Delivery Zone</a>
+                    <a href="#whatsapp">WhatsApp Ordering</a>
+                    <a href="#kitchen">Kitchen View</a>
+                    <a href="mailto:kwizrestaurant@gmail.com">Email Us</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Business Hours</h3>
+                    <p><strong>Delivery Hours:</strong><br>8:00 AM - 10:30 PM (Daily)</p>
+                    <p><strong>Restaurant Hours:</strong><br>24/7 Open for Walk-ins</p>
+                    <p><strong>Payment:</strong><br>Cash on Delivery Only</p>
+                    <p><strong>Free Delivery</strong> within service area</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 KWIZ Restaurant. All rights reserved. | Website designed for efficient order management and improved customer service.</p>
+                <p style="margin-top: 15px; font-size: 0.8rem;">Need help? Email: <a href="mailto:kwizrestaurant@gmail.com" style="color: var(--accent);">kwizrestaurant@gmail.com</a> | Call: 0702 373 219</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== CONFIGURATION =====
+        const CONFIG = {
+            restaurant: {
+                name: "KWIZ Restaurant",
+                phone: "+254702373219",
+                whatsapp: "+254702373219",
+                email: "kwizrestaurant@gmail.com",
+                chef: "EVRARD",
+                location: "Ngara, Nairobi"
+            },
+            delivery: {
+                areas: ["Ngara Equity", "Mwangi Riika Crescent", "Terex Building", "All surrounding buildings"],
+                hours: "8:00 AM - 10:30 PM",
+                freeDelivery: true
+            }
+        };
+
+        // ===== MENU DATA =====
+        const menuItems = [
+            // Main Dishes
+            { id: 1, name: "Roast Potato + Chicken Roti", price: 400, category: "main", desc: "Delicious roast potatoes served with chicken roti, perfect combination", popular: true },
+            { id: 2, name: "Matoke Minji", price: 250, category: "main", desc: "Traditional banana dish with minji, authentic Kenyan taste" },
+            { id: 3, name: "Spaghetti + Chicken", price: 350, category: "main", desc: "Italian spaghetti with Kenyan-style chicken, fusion delight" },
+            { id: 4, name: "Rice Chicken vegetable", price: 300, category: "main", desc: "Fried rice with delicious wet fry chicken, savory and filling" },
+            { id: 5, name: "Matoke Beef", price: 250, category: "main", desc: "Traditional banana dish with tender beef, hearty meal" },
+            { id: 6, name: "Mokimo + Chicken", price: 400, category: "main", desc: "Traditional mashed potatoes and vegetables with chicken", popular: true },
+            { id: 7, name: "Potato Wedges + Chicken Boneles", price: 400, category: "main", desc: "Crispy potato wedges with chicken boneles, crunchy and tasty" },
+            { id: 8, name: "Burger + Chips", price: 350, category: "main", desc: "Juicy burger served with french fries, classic favorite" },
+            { id: 9, name: "Chicken Choma 1/4", price: 250, category: "main", desc: "Quarter grilled chicken, perfectly spiced and tender" },
+            { id: 10, name: "Chicken Choma 1/2", price: 450, category: "main", desc: "Half grilled chicken, great for sharing or big appetite" },
+            { id: 11, name: "Potato Roast + Boneles", price: 350, category: "main", desc: "Roast potatoes with boneles, satisfying and flavorful" },
+            { id: 12, name: "Rice + Eggs Curry", price: 300, category: "main", desc: "Steamed rice with curry eggs, simple and delicious" },
+            { id: 13, name: "Mini Platte ", price: 800, category: "main", desc: "Special platter with chicken, feast for special occasions" },
+            { id: 14, name: "Wedges With Chicken Choma", price: 450, category: "main", desc: "Special wedges with chicken choma, unique and tasty" },
+            { id: 15, name: "Full Platte", price: 1600, category: "main", desc: "Complete full platter, ultimate dining experience" },
+            { id: 16, name: "Double Burger with Chips", price: 700, category: "main", desc: "Double burger with french fries, double the satisfaction" },
+            { id: 17, name: "Pilau Plain", price: 200, category: "main", desc: "Traditional Kenyan pilau, aromatic and flavorful" },
+            { id: 18, name: "Pilau with Beef", price: 350, category: "main", desc: "Pilau rice with tender beef, rich and satisfying", popular: true },
+            { id: 19, name: "Fish + Chips", price: 500, category: "main", desc: "Fried fish with french fries, crispy and delicious" },
+            
+            // Sides & Snacks
+            { id: 20, name: "Salad", price: 300, category: "side", desc: "Fresh vegetable salad, healthy and refreshing" },
+            { id: 21, name: "Bhajia", price: 150, category: "side", desc: "Deep fried potato snacks, crispy and addictive" },
+            { id: 22, name: "Scrambled Eggs", price: 150, category: "side", desc: "Freshly scrambled eggs, fluffy and tasty" },
+            { id: 23, name: "Sausage", price: 50, category: "side", desc: "Grilled sausage, juicy and flavorful" },
+            { id: 24, name: "Samosa", price: 50, category: "side", desc: "Traditional samosa, crispy pastry with filling" },
+            { id: 25, name: "Smokie", price: 50, category: "side", desc: "Grilled smokie, popular Kenyan snack" },
+            { id: 26, name: "Chapati", price: 40, category: "side", desc: "Traditional flatbread, soft and delicious" },
+            { id: 27, name: "Mandazi", price: 20, category: "side", desc: "Kenyan donut, sweet and fluffy" },
+            { id: 28, name: "Viazi Karai", price: 10, category: "side", desc: "Fried potatoes, simple and tasty" },
+            { id: 29, name: "Fried Eggs", price: 100, category: "side", desc: "Fried eggs, perfectly cooked" },
+            { id: 30, name: "Spanish Omelette", price: 150, category: "side", desc: "Spanish-style omelette, fluffy and packed with flavor" },
+            
+            // Drinks
+            { id: 31, name: "Fresh Juice 250ml", price: 50, category: "drink", desc: "Passion, pineapple, mango, apple or orange - your choice" },
+            { id: 32, name: "Fresh Juice 500ml", price: 100, category: "drink", desc: "Passion, pineapple, mango, apple or orange - larger size", popular: true },
+            { id: 33, name: "Cocktail", price: 250, category: "drink", desc: "Special fruit cocktail, refreshing blend" },
+            { id: 34, name: "Soda small", price: 100, category: "drink", desc: "Assorted sodas - Coke, Fanta, Sprite etc." },
+            { id: 35, name: "Soda Big", price: 150, category: "drink", desc: "Large soda, perfect for sharing" }
+        ];
+
+        // ===== STATE MANAGEMENT =====
+        let cart = JSON.parse(localStorage.getItem('evrardCart')) || [];
+        let orderCounter = parseInt(localStorage.getItem('orderCounter')) || 3;
+        let kitchenOrders = JSON.parse(localStorage.getItem('kitchenOrders')) || [
+            {
+                id: "ORD001",
+                items: "2 × Pilau with Beef, 1 × Chicken Choma 1/4, 1 × Fresh Juice 500ml (Mango)",
+                total: 1050,
+                status: "preparing",
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                date: new Date().toLocaleDateString()
+            },
+            {
+                id: "ORD002",
+                items: "1 × Roast Potato + Chicken Roti, 1 × Salad, 2 × Soda 500ml",
+                total: 800,
+                status: "pending",
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                date: new Date().toLocaleDateString()
+            }
+        ];
+
+        // ===== DOM ELEMENTS =====
+        const menuGrid = document.getElementById('menuGrid');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const orderPanel = document.getElementById('orderPanel');
+        const orderItems = document.getElementById('orderItems');
+        const orderTotal = document.getElementById('orderTotal');
+        const cartCount = document.getElementById('cartCount');
+        const viewCartBtn = document.getElementById('viewCartBtn');
+        const closePanelBtn = document.getElementById('closePanelBtn');
+        const clearCartBtn = document.getElementById('clearCartBtn');
+        const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+        const sendEmailBtn = document.getElementById('sendEmailBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const overlay = document.getElementById('overlay');
+        const kitchenOrdersContainer = document.getElementById('kitchenOrders');
+        const simulateOrderBtn = document.getElementById('simulateOrderBtn');
+        const refreshOrdersBtn = document.getElementById('refreshOrdersBtn');
+
+        // ===== UTILITY FUNCTIONS =====
+        function showNotification(type, title, message, duration = 5000) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                </div>
+                <div class="notification-content">
+                    <h4>${title}</h4>
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            document.getElementById('notificationContainer').appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, duration);
+        }
+
+        function formatCurrency(amount) {
+            return `${amount.toLocaleString()} KSH`;
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('evrardCart', JSON.stringify(cart));
+            localStorage.setItem('orderCounter', orderCounter);
+            localStorage.setItem('kitchenOrders', JSON.stringify(kitchenOrders));
+        }
+
+        // ===== MENU RENDERING =====
+        function renderMenuItems(category = 'all') {
+            menuGrid.innerHTML = '';
+            
+            const filteredItems = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+            
+            if (filteredItems.length === 0) {
+                menuGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-utensils" style="font-size: 3rem; color: var(--gray); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--dark); margin-bottom: 10px;">No items in this category</h3>
+                        <p style="color: var(--gray);">Try selecting a different category or view all items.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.innerHTML = `
+                    ${item.popular ? '<div style="position: absolute; top: 15px; right: 15px; background: var(--accent); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 1;">🔥 Popular</div>' : ''}
+                    <img src="photos/${item.id}.jpg" alt="${item.name}" class="menu-item-img" loading="lazy">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">${item.name}</h3>
+                            <span class="menu-item-price">${formatCurrency(item.price)}</span>
+                        </div>
+                        <p class="menu-item-desc">${item.desc}</p>
+                        <div class="menu-item-footer">
+                            <button class="order-item-btn" onclick="addToCart(${item.id})" aria-label="Add ${item.name} to cart">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="quick-order-btn" onclick="quickOrder(${item.id})" aria-label="Quick order ${item.name} via WhatsApp">
+                                <i class="fab fa-whatsapp"></i> Quick Order
+                            </button>
+                        </div>
+                    </div>
+                `;
+                menuGrid.appendChild(menuItem);
+            });
+        }
+
+        // ===== CART MANAGEMENT =====
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+            
+            const existingItem = cart.find(i => i.id === itemId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification('success', 'Item Added', `${item.name} added to cart!`);
+            saveToLocalStorage();
+        }
+
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems > 99 ? '99+' : totalItems;
+            
+            // Update order items display
+            orderItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                orderItems.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 40px 20px;">Your cart is empty. Add items from the menu to get started!</p>';
+                orderTotal.textContent = '0 KSH';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="order-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${formatCurrency(item.price)} × ${item.quantity}</p>
+                        <p class="order-item-price"><strong>${formatCurrency(itemTotal)}</strong></p>
+                    </div>
+                    <div class="order-item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)" aria-label="Decrease quantity">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span style="min-width: 30px; text-align: center; font-weight: 600;">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)" aria-label="Increase quantity">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})" aria-label="Remove item">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                orderItems.appendChild(orderItem);
+            });
+            
+            orderTotal.textContent = formatCurrency(total);
+            
+            // Update WhatsApp link
+            updateWhatsAppLink();
+        }
+
+        function updateQuantity(index, change) {
+            if (cart[index]) {
+                cart[index].quantity += change;
+                
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                    showNotification('warning', 'Item Removed', 'Item removed from cart');
+                }
+                
+                updateCart();
+                saveToLocalStorage();
+            }
+        }
+
+        function removeFromCart(index) {
+            if (cart[index]) {
+                const itemName = cart[index].name;
+                cart.splice(index, 1);
+                updateCart();
+                showNotification('warning', 'Item Removed', `${itemName} removed from cart`);
+                saveToLocalStorage();
+            }
+        }
+
+        function clearCart() {
+            if (cart.length === 0) {
+                showNotification('warning', 'Cart Empty', 'Your cart is already empty');
+                return;
+            }
+            
+            if (confirm('Are you sure you want to clear your cart?')) {
+                cart = [];
+                updateCart();
+                showNotification('success', 'Cart Cleared', 'All items removed from cart');
+                saveToLocalStorage();
+            }
+        }
+
+        // ===== ORDER PROCESSING =====
+        function generateOrderText() {
+            if (cart.length === 0) {
+                return `Hello ${CONFIG.restaurant.name}! I would like to place an order.`;
+            }
+            
+            let text = `Hello ${CONFIG.restaurant.name}! I would like to order:\n\n`;
+            
+            cart.forEach(item => {
+                text += `• ${item.quantity} × ${item.name} - ${formatCurrency(item.price * item.quantity)}\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            text += `\n📦 Total: ${formatCurrency(total)}\n`;
+            text += `\nPlease contact me for delivery details. Thank you!`;
+            
+            return text;
+        }
+
+        function updateWhatsAppLink() {
+            const orderText = generateOrderText();
+            whatsappOrderBtn.href = `https://wa.me/${CONFIG.restaurant.whatsapp}?text=${encodeURIComponent(orderText)}`;
+        }
+
+        function quickOrder(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+            
+            const orderText = `Hello ${CONFIG.restaurant.name}! I would like to order:\n\n• 1 × ${item.name} - ${formatCurrency(item.price)}\n\nPlease contact me for delivery details. Thank you!`;
+            const whatsappUrl = `https://wa.me/${CONFIG.restaurant.whatsapp}?text=${encodeURIComponent(orderText)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Add to kitchen display
+            const newOrder = {
+                id: `ORD${String(orderCounter).padStart(3, '0')}`,
+                items: `1 × ${item.name}`,
+                total: item.price,
+                status: 'pending',
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                date: new Date().toLocaleDateString()
+            };
+            
+            addOrderToKitchen(newOrder);
+            showNotification('success', 'Order Sent', `Quick order for ${item.name} sent to kitchen!`);
+        }
+
+        function sendOrderToKitchen() {
+            if (cart.length === 0) {
+                showNotification('warning', 'Empty Cart', 'Please add items to your cart first');
+                return;
+            }
+            
+            const orderId = `ORD${String(orderCounter).padStart(3, '0')}`;
+            orderCounter++;
+            
+            const orderItemsText = cart.map(item => `${item.quantity} × ${item.name}`).join(', ');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            const newOrder = {
+                id: orderId,
+                items: orderItemsText,
+                total: total,
+                status: 'pending',
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                date: new Date().toLocaleDateString()
+            };
+            
+            addOrderToKitchen(newOrder);
+            
+            // Send email notification (simulated)
+            sendEmailNotification(newOrder);
+            
+            // Clear cart after sending to kitchen
+            setTimeout(() => {
+                cart = [];
+                updateCart();
+                saveToLocalStorage();
+            }, 1000);
+            
+            showNotification('success', 'Order Sent to Kitchen', `Order ${orderId} has been sent to the kitchen and email notification sent!`);
+        }
+
+        // ===== KITCHEN DISPLAY =====
+        function addOrderToKitchen(order) {
+            kitchenOrders.unshift(order);
+            
+            // Keep only last 10 orders
+            if (kitchenOrders.length > 10) {
+                kitchenOrders = kitchenOrders.slice(0, 10);
+            }
+            
+            updateKitchenDisplay();
+            saveToLocalStorage();
+        }
+
+        function updateKitchenDisplay() {
+            kitchenOrdersContainer.innerHTML = '';
+            
+            if (kitchenOrders.length === 0) {
+                kitchenOrdersContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-utensils" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <h3 style="margin-bottom: 10px;">No Active Orders</h3>
+                        <p>Waiting for new orders...</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            kitchenOrders.forEach(order => {
+                const orderElement = document.createElement('div');
+                orderElement.className = 'kitchen-order';
+                orderElement.id = `order-${order.id}`;
+                
+                let statusClass = 'status-pending';
+                if (order.status === 'preparing') statusClass = 'status-preparing';
+                if (order.status === 'ready') statusClass = 'status-ready';
+                if (order.status === 'completed') statusClass = 'status-completed';
+                
+                let statusButtons = '';
+                if (order.status === 'pending') {
+                    statusButtons = `
+                        <button class="status-btn btn-prepare" onclick="updateOrderStatus('${order.id}', 'preparing')">
+                            Start Preparation
+                        </button>
+                    `;
+                } else if (order.status === 'preparing') {
+                    statusButtons = `
+                        <button class="status-btn btn-ready" onclick="updateOrderStatus('${order.id}', 'ready')">
+                            Mark as Ready
+                        </button>
+                    `;
+                } else if (order.status === 'ready') {
+                    statusButtons = `
+                        <button class="status-btn btn-complete" onclick="updateOrderStatus('${order.id}', 'completed')">
+                            Mark Completed
+                        </button>
+                    `;
+                }
+                
+                orderElement.innerHTML = `
+                    <div class="order-header">
+                        <span class="order-id">${order.id}</span>
+                        <span class="order-time">${order.date}, ${order.timestamp}</span>
+                    </div>
+                    <ul class="order-items-list">
+                        ${order.items.split(', ').map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    <div class="order-footer">
+                        <span class="order-status ${statusClass}">${order.status.toUpperCase()}</span>
+                        <div class="status-buttons">
+                            ${statusButtons}
+                        </div>
+                    </div>
+                `;
+                kitchenOrdersContainer.appendChild(orderElement);
+            });
+        }
+
+        function updateOrderStatus(orderId, status) {
+            const order = kitchenOrders.find(o => o.id === orderId);
+            if (order) {
+                order.status = status;
+                
+                if (status === 'completed') {
+                    // Remove completed order after 2 seconds
+                    setTimeout(() => {
+                        const index = kitchenOrders.findIndex(o => o.id === orderId);
+                        if (index > -1) {
+                            kitchenOrders.splice(index, 1);
+                            updateKitchenDisplay();
+                            saveToLocalStorage();
+                        }
+                    }, 2000);
+                }
+                
+                updateKitchenDisplay();
+                saveToLocalStorage();
+                
+                showNotification('success', 'Order Updated', `Order ${orderId} status updated to ${status}`);
+            }
+        }
+
+        function simulateOrder() {
+            const sampleOrders = [
+                {
+                    items: ["2 × Pilau with Beef", "1 × Fresh Juice 500ml (Orange)", "3 × Samosa"],
+                    total: 950
+                },
+                {
+                    items: ["1 × Chicken Choma 1/2", "2 × Chapati", "1 × Salad"],
+                    total: 840
+                },
+                {
+                    items: ["1 × Burger + Chips", "1 × Soda Big", "2 × Bhajia"],
+                    total: 700
+                }
+            ];
+            
+            const randomOrder = sampleOrders[Math.floor(Math.random() * sampleOrders.length)];
+            const orderId = `ORD${String(orderCounter).padStart(3, '0')}`;
+            orderCounter++;
+            
+            const newOrder = {
+                id: orderId,
+                items: randomOrder.items.join(', '),
+                total: randomOrder.total,
+                status: 'pending',
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                date: new Date().toLocaleDateString()
+            };
+            
+            addOrderToKitchen(newOrder);
+            showNotification('success', 'New Order Simulated', `Demo order ${orderId} added to kitchen display!`);
+        }
+
+        // ===== EMAIL NOTIFICATION =====
+        function sendEmailNotification(order) {
+            const subject = `NEW ORDER: ${order.id} - ${CONFIG.restaurant.name}`;
+            const body = `
+NEW ORDER RECEIVED!
+=======================
+
+Order ID: ${order.id}
+Time: ${order.timestamp} (${order.date})
+Status: ${order.status.toUpperCase()}
+
+ORDER ITEMS:
+${order.items}
+
+TOTAL AMOUNT: ${formatCurrency(order.total)}
+
+DELIVERY INFORMATION:
+- Delivery Areas: ${CONFIG.delivery.areas.join(', ')}
+- Delivery Hours: ${CONFIG.delivery.hours}
+- Free Delivery: ${CONFIG.delivery.freeDelivery ? 'Yes' : 'No'}
+
+KITCHEN INSTRUCTIONS:
+Please prepare this order immediately. Customer is waiting.
+
+CONTACT INFORMATION:
+Restaurant: ${CONFIG.restaurant.name}
+Phone: ${CONFIG.restaurant.phone}
+Chef: ${CONFIG.restaurant.chef}
+Location: ${CONFIG.restaurant.location}
+
+--- AUTOMATED EMAIL FROM EVRARD RESTAURANT SYSTEM ---
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:${CONFIG.restaurant.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.open(mailtoLink, '_blank');
+            
+            // Also show notification
+            showNotification('success', 'Email Sent', `Order ${order.id} notification sent to ${CONFIG.restaurant.email}`);
+        }
+
+        // ===== UI CONTROLS =====
+        function toggleOrderPanel() {
+            orderPanel.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = orderPanel.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function toggleMobileMenu() {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        }
+        // ===== MAPPING DES PHOTOS =====
+const photoNames = {
+    1: "roast-potato-chicken.jpg",
+    2: "mutoke-minji.jpg",
+    3: "spaghetti-chicken.jpg",
+    4: "rice-chicken-wet-fry.jpg",
+    5: "mutoke-beef.jpg",
+    6: "salade.jpg",
+    7: "mokimo-chicken.jpg",
+    8: "potato-wedges.jpg",
+    9: "burger-chips.jpg",
+    10: "chicken-choma-1/4.jpg",
+    11: "chicken-choma-1/2.jpg",
+    12: "bhajia.jpg",
+    13: "potato-roast-boheles.jpg",
+    14: "rice-eggs-curry.jpg",
+    15: "plutte-chicken.jpg",
+    16: "plutte-sroll.jpg",
+    17: "full-plutter.jpg",
+    18: "double-burger.jpg",
+    19: "pilau-plain.jpg",
+    20: "pilau-beef.jpg",
+    21: "fish-chips.jpg",
+    22: "scrambled-eggs.jpg",
+    23: "sausage.jpg",
+    24: "samosa.jpg",
+    25: "smokie.jpg",
+    26: "chapati.jpg",
+    27: "mandazi.jpg",
+    28: "viazi-karai.jpg",
+    29: "fried-eggs.jpg",
+    30: "spanish-omelette.jpg",
+    31: "juice-250ml.jpg",
+    32: "juice-500ml.jpg",
+    33: "cocktail.jpg",
+    34: "soda-500ml.jpg",
+    35: "soda-big.jpg"
+};
+        // ===== INITIALIZATION =====
+        function init() {
+            // Render menu
+            renderMenuItems();
+            updateCart();
+            updateKitchenDisplay();
+            
+            // Event listeners for category buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderMenuItems(btn.dataset.category);
+                });
+            });
+            
+            // Event listeners for UI controls
+            viewCartBtn.addEventListener('click', toggleOrderPanel);
+            closePanelBtn.addEventListener('click', toggleOrderPanel);
+            overlay.addEventListener('click', toggleOrderPanel);
+            clearCartBtn.addEventListener('click', clearCart);
+            sendEmailBtn.addEventListener('click', sendOrderToKitchen);
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            simulateOrderBtn.addEventListener('click', simulateOrder);
+            refreshOrdersBtn.addEventListener('click', () => {
+                updateKitchenDisplay();
+                showNotification('success', 'Refreshed', 'Kitchen orders refreshed');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        // Close order panel if open
+                        if (orderPanel.classList.contains('active')) {
+                            toggleOrderPanel();
+                        }
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Auto-refresh kitchen display every 30 seconds
+            setInterval(() => {
+                updateKitchenDisplay();
+            }, 30000);
+            
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('success', 'Welcome to EVRARD Restaurant', 'Start ordering delicious Kenyan food!');
+            }, 1000);
+        }
+
+        // ===== GLOBAL FUNCTIONS (for onclick handlers) =====
+        window.addToCart = addToCart;
+        window.quickOrder = quickOrder;
+        window.updateQuantity = updateQuantity;
+        window.removeFromCart = removeFromCart;
+        window.updateOrderStatus = updateOrderStatus;
+
+        // ===== START APPLICATION =====
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
